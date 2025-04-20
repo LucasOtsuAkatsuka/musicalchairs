@@ -67,8 +67,8 @@ public:
     void eliminar_jogador(int jogador_id) {
         // TODO: Elimina um jogador que não conseguiu uma cadeira
         jogadores_ativos[jogador_id - 1] = false;
+        num_jogadores--; // Atualiza o número de jogadores no jogo
         std::cout << "Jogador P" << jogador_id << " foi eliminado!\n";
-        num_jogadores--;
     }
 
     void exibir_estado() {
@@ -142,7 +142,6 @@ public:
 
             verificar_eliminacao();
         }
-
     }
 
 private:
@@ -162,10 +161,10 @@ public:
             jogo.iniciar_rodada();
             std::this_thread::sleep_for(std::chrono::milliseconds(1000 + rand() % 3000));
             jogo.parar_musica();
-            std::this_thread::sleep_for(std::chrono::seconds(2)); 
+            std::this_thread::sleep_for(std::chrono::seconds(2));
 
             int eliminados = 1;
-            cadeira_sem.release(eliminados);
+            cadeira_sem.release(eliminados); 
             jogo.exibir_estado();
         }
     }
