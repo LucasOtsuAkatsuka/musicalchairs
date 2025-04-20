@@ -164,7 +164,7 @@ public:
             jogo.parar_musica();
             std::this_thread::sleep_for(std::chrono::seconds(2)); 
 
-            int eliminados = jogo.get_num_jogadores() - (NUM_JOGADORES - cadeira_sem.max());
+            int eliminados = 1;
             cadeira_sem.release(eliminados);
             jogo.exibir_estado();
         }
